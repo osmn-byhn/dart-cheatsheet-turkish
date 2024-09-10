@@ -406,3 +406,110 @@ Aşağıda Dart dilinde kullanılan tüm anahtar kelimeler:
 | `do`       | `interface`| `operator`| `var`    | `dynamic` | `in`       |
 | `else`     | `extends`  | `part`    | `void`   | `enum`    | `with`     |
 
+# Tipler ve Methodları:
+Dart dilinde çeşitli veri türleri ve tip sistemleri bulunur. Aşağıda, Dart'taki ana veri türleri ve tip sistemleri hakkında detaylı bilgi verilmiş ve her biri için kullanılabilecek methodlar ve fonksiyonlar tablo şeklinde sunulmuştur.
+
+### 1. **Built-in Types (Yerleşik Tipler)**
+
+| Veri Tipi     | Method/Fonksiyon                  | Açıklama                                                                           | Örnek                                                                                 |
+|---------------|-----------------------------------|-----------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| **int**       | `abs()`                           | Sayının mutlak değerini döndürür.                                                   | `(-5).abs()` -> `5`                                                                   |
+|               | `compareTo()`                     | İki sayıyı karşılaştırır. (Küçükse -1, eşitse 0, büyükse 1 döner.)                  | `5.compareTo(3)` -> `1`                                                               |
+|               | `isEven`                          | Sayının çift olup olmadığını kontrol eder.                                          | `4.isEven` -> `true`                                                                  |
+|               | `isOdd`                           | Sayının tek olup olmadığını kontrol eder.                                           | `3.isOdd` -> `true`                                                                   |
+| **double**    | `ceil()`                          | Sayıyı yukarı yuvarlar.                                                             | `2.3.ceil()` -> `3`                                                                   |
+|               | `floor()`                         | Sayıyı aşağı yuvarlar.                                                              | `2.9.floor()` -> `2`                                                                  |
+|               | `round()`                         | Sayıyı en yakın tam sayıya yuvarlar.                                                | `3.14.round()` -> `3`                                                                 |
+|               | `toInt()`                         | Ondalık sayıyı tam sayıya çevirir.                                                  | `3.99.toInt()` -> `3`                                                                 |
+| **String**    | `contains()`                      | Metnin belirli bir alt diziyi içerip içermediğini kontrol eder.                     | `"dart".contains('ar')` -> `true`                                                     |
+|               | `length`                          | Metin uzunluğunu döner.                                                            | `"Hello".length` -> `5`                                                               |
+|               | `toLowerCase()`                   | Metni küçük harfe çevirir.                                                          | `"DART".toLowerCase()` -> `"dart"`                                                    |
+|               | `toUpperCase()`                   | Metni büyük harfe çevirir.                                                          | `"dart".toUpperCase()` -> `"DART"`                                                    |
+|               | `substring()`                     | Metnin belirli bir kısmını alır.                                                    | `"dart".substring(1, 3)` -> `"ar"`                                                    |
+| **bool**      | `toString()`                      | Mantıksal değeri (true/false) string olarak döndürür.                               | `true.toString()` -> `"true"`                                                         |
+| **List**      | `add()`                           | Listeye bir eleman ekler.                                                          | `list.add(10)`                                                                        |
+|               | `remove()`                        | Listeden bir eleman siler.                                                          | `list.remove(10)`                                                                     |
+|               | `length`                          | Listenin uzunluğunu döner.                                                         | `[1, 2, 3].length` -> `3`                                                             |
+|               | `contains()`                      | Listenin bir elemanı içerip içermediğini kontrol eder.                              | `[1, 2, 3].contains(2)` -> `true`                                                     |
+|               | `join()`                          | Listedeki öğeleri birleştirir ve bir string döner.                                  | `["a", "b", "c"].join(",")` -> `"a,b,c"`                                              |
+| **Set**       | `add()`                           | Set'e bir eleman ekler.                                                            | `set.add(4)`                                                                          |
+|               | `remove()`                        | Set'ten bir eleman siler.                                                          | `set.remove(3)`                                                                       |
+|               | `contains()`                      | Set'in bir elemanı içerip içermediğini kontrol eder.                                | `{1, 2, 3}.contains(2)` -> `true`                                                     |
+| **Map**       | `addAll()`                        | Birden fazla anahtar-değer çifti ekler.                                             | `map.addAll({"key2": 2, "key3": 3})`                                                  |
+|               | `remove()`                        | Belirli bir anahtar-değer çiftini siler.                                            | `map.remove("key1")`                                                                  |
+|               | `containsKey()`                   | Haritanın belirli bir anahtarı içerip içermediğini kontrol eder.                    | `map.containsKey("key1")` -> `true`                                                   |
+|               | `containsValue()`                 | Haritanın belirli bir değeri içerip içermediğini kontrol eder.                      | `map.containsValue(1)` -> `true`                                                      |
+
+### 2. **Records (Kayıtlar)**
+
+| Özellik | Method/Fonksiyon | Açıklama | Örnek |
+|---------|------------------|----------|-------|
+| **Kayıt Tanımlama** | - | Record'lar, adlandırılmış alanlar içeren veri yapılarıdır. | `var person = (name: 'Osman', age: 30);` |
+| **Alan Erişimi** | - | Alanlara `.` (nokta) operatörü ile erişilir. | `print(person.name); // Çıktı: Osman` |
+| **Yeniden Tanımlama** | `with` | Alanları değiştirerek yeni kayıt oluşturma. | `var updatedPerson = person with (age: 31);` |
+| **Destructuring** | - | İçerikleri ayırmak için destructuring kullanılır. | `var (name, age) = person;` |
+| **`toString()`** | `toString()` | Record'un string temsilini döndürür. | `print(person.toString()); // Çıktı: (name: Osman, age: 30)` |
+| **`hashCode`** | `hashCode` | Record'un hash kodunu döndürür. | `print(person.hashCode); // Çıktı: Bir sayısal hash kodu` |
+| **`runtimeType`** | `runtimeType` | Record'un türünü döndürür. | `print(person.runtimeType); // Çıktı: (name: String, age: int)` |
+
+### 3. **Collections (Koleksiyonlar)**
+
+#### **List**
+
+| Method/Fonksiyon | Açıklama | Örnek |
+|------------------|----------|-------|
+| `add()` | Listeye bir eleman ekler. | `list.add(10)` |
+| `remove()` | Listeden bir eleman siler. | `list.remove(10)` |
+| `length` | Listenin uzunluğunu döner. | `[1, 2, 3].length` -> `3` |
+| `contains()` | Liste içinde bir eleman olup olmadığını kontrol eder. | `[1, 2, 3].contains(2)` -> `true` |
+| `join()` | Liste öğelerini birleştirir ve string döner. | `["a", "b", "c"].join(",")` -> `"a,b,c"` |
+| `sort()` | Listeyi sıralar. | `list.sort()` |
+
+#### **Set**
+
+| Method/Fonksiyon | Açıklama | Örnek |
+|------------------|----------|-------|
+| `add()` | Set'e bir eleman ekler. | `set.add(4)` |
+| `remove()` | Set'ten bir eleman siler. | `set.remove(3)` |
+| `contains()` | Set'in bir elemanı içerip içermediğini kontrol eder. | `{1, 2, 3}.contains(2)` -> `true` |
+| `union()` | İki setin birleşimini döndürür. | `{1, 2}.union({2, 3})` -> `{1, 2, 3}` |
+| `intersection()` | İki setin kesişimini döndürür. | `{1, 2}.intersection({2, 3})` -> `{2}` |
+
+#### **Map**
+
+| Method/Fonksiyon | Açıklama | Örnek |
+|------------------|----------|-------|
+| `addAll()` | Birden fazla anahtar-değer çifti ekler. | `map.addAll({"key2": 2, "key3": 3})` |
+| `remove()` | Belirli bir anahtar-değer çiftini siler. | `map.remove("key1")` |
+| `containsKey()` | Belirli bir anahtarı içerip içermediğini kontrol eder. | `map.containsKey("key1")` -> `true` |
+| `containsValue()` | Belirli bir değeri içerip içermediğini kontrol eder. | `map.containsValue(1)` -> `true` |
+| `forEach()` | Map'teki her anahtar-değer çifti için bir işlem yapar. | `map.forEach((key, value) => print('$key: $value'));` |
+
+### 4. **Generics (Genel Türler)**
+
+| Özellik | Method/Fonksiyon | Açıklama | Örnek |
+|---------|------------------|----------|-------|
+| **Genel Listeler** | `add()` | Liste
+
+ye eleman ekler. | `List<int> numbers = []; numbers.add(1);` |
+| **Genel Mapler** | `putIfAbsent()` | Anahtar mevcut değilse yeni anahtar-değer çifti ekler. | `Map<String, int> map = {}; map.putIfAbsent('key', () => 1);` |
+| **Genel Fonksiyonlar** | `Function<T>` | Tip güvenli fonksiyonları temsil eder. | `Function<int> square = (int x) => x * x;` |
+| **Kapsayıcı Sınıflar** | `T` | Genel türler içeren sınıflar. | `class Box<T> { T value; Box(this.value); }` |
+
+### 5. **Typedefs (Tür Tanımları)**
+
+| Özellik | Method/Fonksiyon | Açıklama | Örnek |
+|---------|------------------|----------|-------|
+| **Fonksiyon Tipi Tanımlama** | `typedef` | Fonksiyon türlerini tanımlar. | `typedef IntFunction = int Function(int);` |
+| **Kullanım** | - | Tanımlanan tipi bir fonksiyon olarak kullanma. | `IntFunction addOne = (int x) => x + 1;` |
+
+### 6. **Type System (Tür Sistemi)**
+
+| Özellik | Method/Fonksiyon | Açıklama | Örnek |
+|---------|------------------|----------|-------|
+| **Dinamik Tür** | `dynamic` | Her türde değer alabilen bir değişken türüdür. | `dynamic x = 10; x = 'string';` |
+| **Nötr Tür** | `Object` | Tüm Dart nesnelerinin temel türüdür. | `Object obj = 'hello'; obj = 42;` |
+| **Sabit Türler** | `const` | Sabit değerleri temsil eder. | `const pi = 3.14;` |
+| **Final** | `final` | Bir kere atandıktan sonra değişmeyen değişkenler. | `final name = 'Osman';` |
+
+
